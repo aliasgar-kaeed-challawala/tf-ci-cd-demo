@@ -4,7 +4,11 @@ provider "aws"{
 
 #tfsec:ignore:aws-s3-enable-bucket-logging
 resource "aws_s3_bucket" "my-bucket"{
-    bucket = "akc-s3-tf-bucket"
+    bucket = "akc-s3-tf-bucket-${var.environment}"
+
+    tags = {
+        Environment = var.environment
+    }
 }
 
 resource "aws_s3_bucket_ownership_controls" "my-controls"{

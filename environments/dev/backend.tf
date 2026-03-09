@@ -2,8 +2,9 @@ terraform{
     backend "s3"{
         bucket = "akc-s3-backend-bucket"
         region = "us-east-1"
-        key = "s3-bckend/terraform.tfstate"
+        key = "dev/terraform.tfstate"
         encrypt = true
+        use_lockfile = true
     }
     required_version = ">=0.13.0"
     required_providers {
