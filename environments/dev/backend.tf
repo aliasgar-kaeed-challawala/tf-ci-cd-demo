@@ -4,7 +4,6 @@ terraform{
         region = "us-east-1"
         key = "dev/terraform.tfstate"
         encrypt = true
-        use_lockfile = true
     }
     required_version = ">=0.13.0"
     required_providers {
