@@ -68,7 +68,7 @@ jobs:
     - name: 'Terraform Init'
       run: | 
         cd environments/${{ env.ENV }}
-        terraform init
+        terraform init --reconfigure
     
     - name: 'Terraform Format'
       run: terraform fmt
@@ -92,7 +92,7 @@ jobs:
         terraform plan -out=tfplan
 
     - name: 'Terraform Apply'
-      if: github.ref == 'refs/heads/main'
+      if: github.event_name == 'push'
       run: |
         cd environments/${{ env.ENV }}
         terraform apply -auto-approve tfplan
