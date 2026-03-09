@@ -28,9 +28,9 @@ jobs:
     
     - name: 'Set Environment'
       run: |
-        if [[ "${GITHUB_REF}" == "refs/heads/dev" ]]; then
+        if [[ "${GITHUB_BASE_REF}" == "dev" || "${GITHUB_REF}" == "refs/heads/dev" ]]; then
           echo "ENV=dev" >> $GITHUB_ENV
-        elif [[ "${GITHUB_REF}" == "refs/heads/test" ]]; then
+        elif [[ "${GITHUB_BASE_REF}" == "test" || "${GITHUB_REF}" == "refs/heads/test" ]]; then
           echo "ENV=test" >> $GITHUB_ENV
         elif [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
           echo "ENV=prod" >> $GITHUB_ENV
